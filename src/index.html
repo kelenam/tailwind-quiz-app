@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist/style.css" class="style">
+</head>
+<body class="m-0 bg-purple-100 h-full w-full"> 
+    <div class="quiz container flex flex-row mx-auto">
+            <div class="question w-full p-4 self-center">
+                <h3 class="question__title font-bold text-indigo-800" id="title"></h3>
+                <div class="question__answers flex flex-col w-full align-center" id="answers"></div>
+                <div class="question__actions">
+                    <button class="btn cursor-auto bg-gray-500 text-white p-2 m-1 rounded shadow-m pointer-events-none"  id="submit_btn">Submit</button>
+                    <button class="btn hover:bg-blue-400 bg-blue-600 text-white p-2 m-1 rounded shadow-m hidden"  id="next_btn">Next Question</button>
+                </div>
+            </div>
+
+            <div class="score text-center font-bold mx-auto text-xl justify-center hidden">
+                You Scored: <span id="score"></span>
+            </div>
+    </div>
+        <script src="index.js"></script>
+</body>
+</html>
