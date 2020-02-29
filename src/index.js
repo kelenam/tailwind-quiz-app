@@ -10,18 +10,110 @@ let questions,
   currentQuestion,
   score = 0;
 
-function getQuestions() {
-  const request = new XMLHttpRequest();
-  request.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      questions = JSON.parse(this.responseText).questions;
-      questionsCount = questions.length;
-      currentQuestion = 0;
-    }
-  };
-  request.open("GET", "../api/questions.json", false);
-  request.send();
-}
+// GHPages static hosting likely preventing from making external calls
+// Creating a mock- 
+//
+// function getQuestions() {
+//   const request = new XMLHttpRequest();
+//   request.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//       questions = JSON.parse(this.responseText).questions;
+//       questionsCount = questions.length;
+//       currentQuestion = 0;
+//     }
+//   };
+//   request.open("GET", "../api/questions.json", false);
+//   request.send();
+// }
+
+function mockGetQuestions() {
+  questions = {
+    "questions": [
+      {
+        "id": "0",
+        "title": "Did you use TailwindCSS for this project?",
+        "answers": [
+          {
+            "id": "0",
+            "answer": "Yes"
+          },
+          {
+            "id": "1",
+            "answer": "No"
+          }
+        ],
+        "correct": "0"
+      },
+      {
+        "id": "1",
+        "title": "XML stands for?",
+        "answers": [
+          {
+            "id": "0",
+            "answer": "Xenophobic Mall Lizards"
+          },
+          {
+            "id": "1",
+            "answer": "Xenomorphs Making Lasagna"
+          },
+          {
+            "id": "2",
+            "answer": "eXtensible Markup Language"
+          }
+        ],
+        "correct": "2"
+      },
+      {
+        "id": "3",
+        "title": "Which of the following are a few things that you can do with fetch and not with XHR?",
+        "answers": [
+          {
+            "id": "0",
+            "answer": "You can use the Cache API with the request and response objects"
+          },
+          {
+            "id": "1",
+            "answer": "You can perform no-cors requests, getting a response from a server that doesn't implement CORS. You can't access the response body directly from JavaScript, but you can use it with other APIs (e.g. the Cache API);"
+          },
+          {
+            "id": "2",
+            "answer": "Streaming responses (with XHR the entire response is buffered in memory, with fetch you will be able to access the low-level stream). This isn't available yet in all browsers, but will be soon."
+          },
+          {
+            "id": "3",
+            "answer": "All of the above"
+          }
+        ],
+        "correct": "3"
+      },
+      {
+        "id": "4",
+        "title": "Should XMLHttpRequest.onreadystatechange be used with synchronous requests?",
+        "answers": [
+          {
+            "id": "0",
+            "answer": "Definitely not"
+          },
+          {
+            "id": "1",
+            "answer": "Definitely not"
+          },
+          {
+            "id": "2",
+            "answer": "Definitely not"
+          },
+          {
+            "id": "3",
+            "answer": "Definitely not, but we'll use it anyway!"
+          }
+        ],
+        "correct": "3"
+      }
+    ]
+  }.questions;      
+  questionsCount = questions.length;
+  currentQuestion = 0;
+} 
 
 function displayQuestion(question) {
   question_title_elem.innerHTML = "";
@@ -64,7 +156,8 @@ function supplantElement(toHide, toShow) {
 }
 
 /************ Initialize ***********/
-getQuestions();
+//getQuestions();
+mockGetQuestions();
 displayQuestion(questions[currentQuestion]);
 
 /************ Event Listeners ***********/
